@@ -15,19 +15,26 @@ do{
             echo "you have { $total - $count} guesses left.\n";
         }
         $guess = readline("Enter your guess {$count}: ");
-        $range = $guess - $number;
-        if ($guess == $number) {
-            echo "Congratulation!\n";
-            echo "The number was {$number}!\n";
-            break;
-        } elseif ($range > 10) {
-            echo "Too high \n";
-        } elseif ($range < -10) {
-            echo "Too low \n";
-        } else {
-            echo "Close \n";
-        }
-        $count++;
+         $diff = $guess - $number;
+
+if ($guess == $number) {
+    echo "Congratulations!\n";
+    echo "The number was {$number}!\n";
+    break;
+
+} elseif ($diff > 10) {
+    echo "Too high\n";
+
+} elseif ($diff > 0 && $diff <= 10) {
+    echo "Little high\n";
+
+} elseif ($diff < -10) {
+    echo "Too low\n";
+
+} elseif ($diff < 0 && $diff >= -10) {
+    echo "Little low\n";
+}
+         $count++;
     }
     $toContinue = readline("Do you want to continue playing(y/n): ");
 } while($toContinue == "y");
